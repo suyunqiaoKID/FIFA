@@ -9,3 +9,5 @@ note/
 .git/
 
 include/bits
+
+edit.cpp
