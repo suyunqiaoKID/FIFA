@@ -438,25 +438,25 @@ Team FindTeam(string name){
 void detail(result game){
     sort(game.goal_list+1,game.goal_list+game.home_goal+game.away_goal+1,cmp1);
     int num_goal=1;
-    cout<<game.home_name<<" 对阵 "<<game.away_name<<endl;
-    printf("总比分: %d - %d\n",game.home_goal,game.away_goal);
-    printf("控球率: %d - %d\n",game.home_holdball,game.away_holdball);
-    printf("射门次数(射正次数): %d ( %d ) - %d ( %d )\n",game.home_shoot,game.home_shoot_on_target,game.away_shoot,game.away_shoot_on_target);
-    printf("扑救次数: %d - %d\n",game.home_save,game.away_save);
-    printf("主队的进球:\n");
+    cout<<game.home_name<<" vs "<<game.away_name<<endl;
+    printf("Total score: %d - %d\n",game.home_goal,game.away_goal);
+    printf("Possession: %d - %d\n",game.home_holdball,game.away_holdball);
+    printf("Shots(Shots on goal): %d ( %d ) - %d ( %d )\n",game.home_shoot,game.home_shoot_on_target,game.away_shoot,game.away_shoot_on_target);
+    printf("Saves: %d - %d\n",game.home_save,game.away_save);
+    printf("Home team goals:\n");
     while(game.goal_list[num_goal].goal_side&&num_goal<=game.home_goal){
         cout<<"No. "<<game.goal_list[num_goal].kit_num<<":"<<game.goal_list[num_goal].name<<"   ["<<game.goal_list[num_goal].goal_time<<"']   ";
         if(game.goal_list[num_goal].num_ass!=-1)
-        cout<<"助攻: No."<<game.goal_list[num_goal].num_ass<<":"<<game.goal_list[num_goal].assister<<endl;
+        cout<<"   Assister: No."<<game.goal_list[num_goal].num_ass<<":"<<game.goal_list[num_goal].assister<<endl;
         else
         puts("");
         num_goal++;
     }
-    printf("客队的进球:\n");
+    printf("Away team goals:\n");
     while(num_goal<=game.home_goal+game.away_goal){
         cout<<"No. "<<game.goal_list[num_goal].kit_num<<":"<<game.goal_list[num_goal].name<<"   ["<<game.goal_list[num_goal].goal_time<<"']";
         if(game.goal_list[num_goal].num_ass!=-1)
-        cout<<"   助攻: No."<<game.goal_list[num_goal].num_ass<<":"<<game.goal_list[num_goal].assister<<endl;
+        cout<<"   Assister: No."<<game.goal_list[num_goal].num_ass<<":"<<game.goal_list[num_goal].assister<<endl;
         else
         puts("");
         num_goal++;
