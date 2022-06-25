@@ -18,7 +18,7 @@ void GetSchedule();
 
 void init();
 
-void quit();
+void save();
 
 void choose_host_team();
 
@@ -75,7 +75,7 @@ void init(){
     return;
 }
 
-void quit(){
+void save(){
     ofstream out("..\\data\\round.sav");
     out<<1<<endl;
     out<<now_round<<endl;
@@ -111,14 +111,14 @@ int main(){
     while(true){
         system("cls");
         printf("next game id:%d\n",now_round+1);
-        puts("Q:quit W:jump to next game      E:jump to next host team game       R:view histroy game record     T:view team standing    Y:view shooter broad     U:view assister broad");
+        puts("Q:save W:jump to next game      E:jump to next host team game       R:view histroy game record     T:view team standing    Y:view shooter broad     U:view assister broad");
         char key;
         do{
             key=getch();
             if(key>='a'&&key<='z')
             key+='A'-'a';
             if(key=='Q'){
-                quit();
+                save();
                 return 0;
             }
             else if(key=='W'){
@@ -143,6 +143,7 @@ int main(){
                     now_round=0;
                     system("cls");
                 }
+                save();
                 result tmp=match(home[now_round],away[now_round]);
                 Archive(tmp);
                 PushResult(tmp);
@@ -177,8 +178,10 @@ int main(){
                     result tmp=match(home[now_round],away[now_round]);
                     Archive(tmp);
                     PushResult(tmp);
+                    save();
                 }
                 now_round++;
+                save();
                 if(now_round>224){
                     puts("this season is finished");
                     puts("let's view this season!");
