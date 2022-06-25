@@ -1,4 +1,4 @@
-# FIFA22(伪)
+# FIFA22(FAKE)
 ## How to play
 ### Windows
 ```
