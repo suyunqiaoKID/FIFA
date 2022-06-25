@@ -8,7 +8,6 @@ md bin
 g++.exe src/main.cpp -o bin/main.exe -I include
 cd bin
 main.exe
-
 ```
 
 ### Linux
