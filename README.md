@@ -15,7 +15,7 @@ main.exe
 git clone https://github.com/suyunqiaoKID/FIFA.git
 cd FIFA
 mkdir bin
-g++ src/main.cpp -o bin/main.exe -I include
+g++ src/main.cpp -o bin/main -I include
 cd bin
 ./main
 ```
