@@ -653,7 +653,7 @@ result match(string Home,string Away){//模拟比赛
 
 void Archive(result x){
     //club
-    puts("mark1");
+    //puts("mark1");
     ifstream in("..\\data\\clublist.sav");
     string level,need_sort;
     Club super[9],major[9],senior[9],junior[9];
@@ -1074,12 +1074,12 @@ void Archive(result x){
     bout.close();
     //puts("out for assister success");
     //system("pause");
-    puts("mark");
+    //puts("mark");
     ifstream din("..\\data\\goalkeeperlist.sav");
     person super_GK[50],major_GK[50],senior_GK[50],junior_GK[50];
     din>>level;
     din>>num_super;
-    printf("num_super=%d\n",num_super);
+    //printf("num_super=%d\n",num_super);
     for(register int i=1;i<=num_super;i++)
     din>>super_GK[i].name>>super_GK[i].value;
     if(level==need_sort){
