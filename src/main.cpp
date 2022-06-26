@@ -1,5 +1,3 @@
-#include "bits/stdc++.h"
-
 #include "fifa.h"
 
 #include "conio.h"
@@ -110,8 +108,9 @@ int main(){
     choose_host_team();
     while(true){
         system("cls");
-        printf("next game id:%d\n",now_round+1);
-        puts("Q:save W:jump to next game      E:jump to next host team game       R:view histroy game record     T:view team standing    Y:view shooter broad     U:view assister broad");
+        printf("next game id:%d    ",now_round+1);
+        cout<<"your host team :"<<host_team<<endl;
+        puts("Q:save W:jump to next game      E:jump to next host team game       R:view histroy game record\nT:view team standing    Y:view shooter broad     U:view assister broad     I:view goalkeeper broad");
         char key;
         do{
             key=getch();
@@ -143,11 +142,12 @@ int main(){
                     now_round=0;
                     system("cls");
                 }
-                save();
                 result tmp=match(home[now_round],away[now_round]);
+                //printf("mark2");
+                detail(tmp);
                 Archive(tmp);
                 PushResult(tmp);
-                detail(tmp);
+                save();
                 puts("press any key to back");
                 char opt=getch();
                 break;
@@ -181,7 +181,6 @@ int main(){
                     save();
                 }
                 now_round++;
-                save();
                 if(now_round>224){
                     puts("this season is finished");
                     puts("let's view this season!");
@@ -206,6 +205,7 @@ int main(){
                 Archive(tmp);
                 PushResult(tmp);
                 detail(tmp);
+                save();
                 puts("press any key to back");
                 char opt=getch();
                 break;
@@ -257,6 +257,13 @@ int main(){
             else if(key=='U'){
                 system("cls");
                 ShowAssisterList();
+                puts("press any key to back");
+                char opt=getch();
+                break;
+            }
+            else if(key=='I'){
+                system("cls");
+                ShowGoalkeeperList();
                 puts("press any key to back");
                 char opt=getch();
                 break;

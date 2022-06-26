@@ -3,9 +3,13 @@
 
 //headfile that game need
 
-#include "bits/stdc++.h"
+#include "iostream"
+
+#include "cstdio"
 
 #include "cstring"
+
+#include "algorithm"
 
 #include "calc.h"
 
@@ -195,6 +199,8 @@ void ShowClubList();
 void ShowShooterList();
 
 void ShowAssisterList();
+
+void ShowGoalkeeperList();
 
 void ShowTeam();
 
@@ -643,6 +649,7 @@ result match(string Home,string Away){//模拟比赛
 
 void Archive(result x){
     //club
+    puts("mark1");
     ifstream in("..\\data\\clublist.sav");
     string level,need_sort;
     Club super[9],major[9],senior[9],junior[9];
@@ -1060,10 +1067,173 @@ void Archive(result x){
     for(register int i=1;i<=num_junior;i++)
     bout<<junior_assist[i].name<<" "<<junior_assist[i].value<<endl;
     bout<<endl;
-    bin.close();
     bout.close();
     //puts("out for assister success");
     //system("pause");
+    puts("mark");
+    ifstream din("..\\data\\goalkeeperlist.sav");
+    person super_GK[50],major_GK[50],senior_GK[50],junior_GK[50];
+    din>>level;
+    din>>num_super;
+    printf("num_super=%d\n",num_super);
+    for(register int i=1;i<=num_super;i++)
+    din>>super_GK[i].name>>super_GK[i].value;
+    if(level==need_sort){
+        string home_GK=FindTeam(x.home_name).name[11];
+        string away_GK=FindTeam(x.away_name).name[11];
+        bool been=false;
+        for(register int i=1;i<=num_super;i++){
+            if(super_GK[i].name==home_GK){
+                super_GK[i].value+=x.home_save;
+                been=true;
+            }
+        }
+        if(!been&&x.home_save>0){
+            num_super++;
+            super_GK[num_super].name=home_GK;
+            super_GK[num_super].value=x.home_save;
+        }
+        been=false;
+        for(register int i=1;i<=num_super;i++){
+            if(super_GK[i].name==away_GK){
+                super_GK[i].value+=x.away_save;
+                been=true;
+            }
+        }
+        if(!been&&x.away_save>0){
+            num_super++;
+            super_GK[num_super].name=away_GK;
+            super_GK[num_super].value=x.away_save;
+        }
+    }
+    din>>level;
+    din>>num_major;
+    for(register int i=1;i<=num_major;i++)
+    din>>major_GK[i].name>>major_GK[i].value;
+    if(level==need_sort){
+        string home_GK=FindTeam(x.home_name).name[11];
+        string away_GK=FindTeam(x.away_name).name[11];
+        bool been=false;
+        for(register int i=1;i<=num_major;i++){
+            if(major_GK[i].name==home_GK){
+                major_GK[i].value+=x.home_save;
+                been=true;
+            }
+        }
+        if(!been&&x.home_save>0){
+            num_major++;
+            major_GK[num_major].name=home_GK;
+            major_GK[num_major].value=x.home_save;
+        }
+        been=false;
+        for(register int i=1;i<=num_major;i++){
+            if(major_GK[i].name==away_GK){
+                major_GK[i].value+=x.away_save;
+                been=true;
+            }
+        }
+        if(!been&&x.away_save>0){
+            num_major++;
+            major_GK[num_major].name=away_GK;
+            major_GK[num_major].value=x.away_save;
+        }
+    }
+    din>>level;
+    din>>num_senior;
+    for(register int i=1;i<=num_senior;i++)
+    din>>senior_GK[i].name>>senior_GK[i].value;
+    if(level==need_sort){
+        string home_GK=FindTeam(x.home_name).name[11];
+        string away_GK=FindTeam(x.away_name).name[11];
+        bool been=false;
+        for(register int i=1;i<=num_senior;i++){
+            if(senior_GK[i].name==home_GK){
+                senior_GK[i].value+=x.home_save;
+                been=true;
+            }
+        }
+        if(!been&&x.home_save>0){
+            num_senior++;
+            senior_GK[num_senior].name=home_GK;
+            senior_GK[num_senior].value=x.home_save;
+        }
+        been=false;
+        for(register int i=1;i<=num_senior;i++){
+            if(senior_GK[i].name==away_GK){
+                senior_GK[i].value+=x.away_save;
+                been=true;
+            }
+        }
+        if(!been&&x.away_save>0){
+            num_senior++;
+            senior_GK[num_senior].name=away_GK;
+            senior_GK[num_senior].value=x.away_save;
+        }
+    }
+    din>>level;
+    din>>num_junior;
+    for(register int i=1;i<=num_junior;i++)
+    din>>junior_GK[i].name>>junior_GK[i].value;
+    if(level==need_sort){
+        string home_GK=FindTeam(x.home_name).name[11];
+        string away_GK=FindTeam(x.away_name).name[11];
+        bool been=false;
+        for(register int i=1;i<=num_junior;i++){
+            if(junior_GK[i].name==home_GK){
+                junior_GK[i].value+=x.home_save;
+                been=true;
+            }
+        }
+        if(!been&&x.home_save>0){
+            num_junior++;
+            junior_GK[num_junior].name=home_GK;
+            junior_GK[num_junior].value=x.home_save;
+        }
+        been=false;
+        for(register int i=1;i<=num_junior;i++){
+            if(junior_GK[i].name==away_GK){
+                junior_GK[i].value+=x.away_save;
+                been=true;
+            }
+        }
+        if(!been&&x.away_save>0){
+            num_junior++;
+            junior_GK[num_junior].name=away_GK;
+            junior_GK[num_junior].value=x.away_save;
+        }
+    }
+    din.close();
+    if(need_sort=="super")
+    sort(super_GK+1,super_GK+num_super+1,cmp3);
+    if(need_sort=="major")
+    sort(major_GK+1,major_GK+num_major+1,cmp3);
+    if(need_sort=="senior")
+    sort(senior_GK+1,senior_GK+num_senior+1,cmp3);
+    if(need_sort=="junior")
+    sort(junior_GK+1,junior_GK+num_junior+1,cmp3);
+    ofstream dout("..\\data\\goalkeeperlist.sav");
+    dout<<"super"<<endl;
+    dout<<num_super<<endl;
+    for(register int i=1;i<=num_super;i++)
+    dout<<super_GK[i].name<<" "<<super_GK[i].value<<endl;
+    dout<<endl;
+    dout<<"major"<<endl;
+    dout<<num_major<<endl;
+    for(register int i=1;i<=num_major;i++)
+    dout<<major_GK[i].name<<" "<<major_GK[i].value<<endl;
+    dout<<endl;
+    dout<<"senior"<<endl;
+    dout<<num_senior<<endl;
+    for(register int i=1;i<=num_senior;i++)
+    dout<<senior_GK[i].name<<" "<<senior_GK[i].value<<endl;
+    dout<<endl;
+    dout<<"junior"<<endl;
+    dout<<num_junior<<endl;
+    for(register int i=1;i<=num_junior;i++)
+    dout<<junior_GK[i].name<<" "<<junior_GK[i].value<<endl;
+    dout<<endl;
+    dout.close();
+    return;
 }
 
 result GetResult(int x){
@@ -1175,6 +1345,9 @@ void NewSeason(){
     ofstream bout("..\\data\\assisterlist.sav");
     bout<<"super\n0\n\nmajor\n0\n\nsenior\n0\n\njunior\n0\n";
     bout.close();
+    ofstream fout("..\\data\\goalkeeperlist.sav");
+    fout<<"super\n0\n\nmajor\n0\n\nsenior\n0\n\njunior\n0\n";
+    fout.close();
     ofstream dout("..\\data\\round.sav");
     dout<<"0\n0\n";
     dout.close();
@@ -1346,6 +1519,50 @@ void ShowTeam(){
         in>>team_name>>PI>>GD>>Pts;
         cout<<i<<setw(25)<<team_name/*<<setw(4)<<PI<<setw(4)<<GD<<setw(4)<<Pts*/<<endl;
     }
+    in.close();
+    return;
+}
+
+void ShowGoalkeeperList(){
+    ifstream in("..\\data\\goalkeeperlist.sav");
+    string level,name;
+    int num,saves;
+    in>>level;
+    in>>num;
+    cout<<level<<" league\n";
+    cout<<"Pos"<<setw(23)<<"Name"<<setw(15)<<"Saves\n";
+    for(register int i=1;i<=num;i++){
+        in>>name>>saves;
+        cout<<i<<setw(25)<<name<<setw(13)<<saves<<endl;
+    }
+    puts("\n\n");
+    in>>level;
+    in>>num;
+    cout<<level<<" league\n";
+    cout<<"Pos"<<setw(23)<<"Name"<<setw(15)<<"Saves\n";
+    for(register int i=1;i<=num;i++){
+        in>>name>>saves;
+        cout<<i<<setw(25)<<name<<setw(13)<<saves<<endl;
+    }
+    puts("\n\n");
+    in>>level;
+    in>>num;
+    cout<<level<<" league\n";
+    cout<<"Pos"<<setw(23)<<"Name"<<setw(15)<<"Saves\n";
+    for(register int i=1;i<=num;i++){
+        in>>name>>saves;
+        cout<<i<<setw(25)<<name<<setw(13)<<saves<<endl;
+    }
+    puts("\n\n");
+    in>>level;
+    in>>num;
+    cout<<level<<" league\n";
+    cout<<"Pos"<<setw(23)<<"Name"<<setw(15)<<"Saves\n";
+    for(register int i=1;i<=num;i++){
+        in>>name>>saves;
+        cout<<i<<setw(25)<<name<<setw(13)<<saves<<endl;
+    }
+    puts("\n\n");
     in.close();
     return;
 }
