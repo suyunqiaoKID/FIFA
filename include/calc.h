@@ -1,7 +1,7 @@
 #ifndef _CALC_H
 #define _CALC_H
 
-#include "bits/stdc++.h"
+#include "cstdlib"
 
 using namespace std;
 

@@ -11,6 +11,10 @@
 
 #include "algorithm"
 
+#include "iomanip"
+
+#include "ctime"
+
 #include "calc.h"
 
 #include "fstream"
