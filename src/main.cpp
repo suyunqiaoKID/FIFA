@@ -135,6 +135,8 @@ int main(){
                     puts("\n\n");
                     ShowAssisterList();
                     puts("\n\n");
+                    ShowGoalkeeperList();
+                    puts("\n\n");
                     puts("press any key to start next season!");
                     opt=getch();
                     NewSeason();
@@ -168,6 +170,8 @@ int main(){
                     puts("\n\n");
                     ShowAssisterList();
                     puts("\n\n");
+                    ShowGoalkeeperList();
+                    puts("\n\n");
                     puts("press any key to start next season!");
                     opt=getch();
                     NewSeason();
@@ -192,6 +196,8 @@ int main(){
                     ShowShooterList();
                     puts("\n\n");
                     ShowAssisterList();
+                    puts("\n\n");
+                    ShowGoalkeeperList();
                     puts("\n\n");
                     puts("press any key to start next season!");
                     opt=getch();
@@ -218,7 +224,7 @@ int main(){
                     cout<<setw(15)<<tmp.home_name<<setw(5)<<" vs "<<setw(15)<<tmp.away_name<<endl;
                     cout<<setw(15)<<tmp.home_goal<<" - "<<tmp.away_goal<<endl;
                 }
-                puts("Q:back  W:view");
+                puts("Q:back   W:view specified match   E:view specified team's match");
                 char opt;
                 do{
                     opt=getch();
@@ -228,7 +234,7 @@ int main(){
                         system("cls");
                         break;
                     }
-                    else{
+                    else if(opt=='W'){
                         puts("press game id to view");
                         int x;
                         cin>>x;
@@ -238,7 +244,42 @@ int main(){
                         opt=getch();
                         break;
                     }
-                }while(opt!='Q'&&opt!='W');
+                    else if(opt=='E'){
+                        puts("press team name id to view");
+                        string team_name;
+                        cin>>team_name;
+                        system("cls");
+                        for(register int i=1;i<=now_round;i++){
+                            result tmp=GetResult(i);
+                            if(tmp.home_name!=team_name&&tmp.away_name!=team_name)
+                            continue;
+                            printf("game id:%d\n",i);
+                            cout<<setw(15)<<tmp.home_name<<setw(5)<<" vs "<<setw(15)<<tmp.away_name<<endl;
+                            cout<<setw(15)<<tmp.home_goal<<" - "<<tmp.away_goal<<endl;
+                        }
+                        puts("Q:back  W:view specified match");
+                        char opt1;
+                        do{
+                            opt1=getch();
+                            if(opt1>='a'&&opt1<='z')
+                            opt1+='A'-'a';
+                            if(opt1=='Q'){
+                                system("cls");
+                                break;
+                            }
+                            else if(opt1=='W'){
+                                puts("press game id to view");
+                                int x;
+                                cin>>x;
+                                system("cls");
+                                detail(GetResult(x));
+                                puts("press any key to back");
+                                opt=getch();
+                                break;
+                            }
+                        }while(opt1!='Q'&&opt1!='W');
+                    }
+                }while(opt!='Q'&&opt!='W'&&opt!='E');
             }
             else if(key=='T'){
                 system("cls");

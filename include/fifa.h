@@ -186,6 +186,8 @@ Team FindTeam(string name);
 
 result match(string Home,string Away);
 
+void detail(result game);
+
 int shooter(Team t);
 
 int assister(Team t,int shoot);
@@ -1010,7 +1012,7 @@ void Archive(result x){
                 senior_assist[num_senior].value=1;
             }
         }
-    }
+    }//system("cls");
     bin>>level;
     bin>>num_junior;
     for(register int j=1;j<=num_junior;j++)
